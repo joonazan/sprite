@@ -3,9 +3,9 @@ package sprite
 import (
 	"github.com/go-gl/gl"
 	glfw "github.com/go-gl/glfw3"
+	"github.com/joonazan/vec2"
 	"image"
 	"testing"
-	"vec2"
 )
 
 type Testbed struct {

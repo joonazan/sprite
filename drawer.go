@@ -3,8 +3,8 @@ package sprite
 import (
 	"github.com/go-gl/gl"
 	glfw "github.com/go-gl/glfw3"
+	"github.com/joonazan/vec2"
 	"unsafe"
-	"vec2"
 )
 
 type Image struct {
