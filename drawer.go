@@ -1,7 +1,7 @@
 package sprite
 
 import (
-	"github.com/go-gl/gl"
+	"github.com/go-gl-legacy/gl"
 	glfw "github.com/go-gl/glfw3"
 	"github.com/joonazan/vec2"
 	"unsafe"

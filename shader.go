@@ -2,7 +2,7 @@ package sprite
 
 import (
 	"fmt"
-	"github.com/go-gl/gl"
+	"github.com/go-gl-legacy/gl"
 	"io/ioutil"
 	"log"
 	"strings"

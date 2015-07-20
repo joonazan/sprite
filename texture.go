@@ -1,7 +1,7 @@
 package sprite
 
 import (
-	"github.com/go-gl/gl"
+	"github.com/go-gl-legacy/gl"
 	"image"
 	_ "image/png"
 	"log"
