@@ -26,11 +26,11 @@ func CreateProgram(filenames ...string) gl.Program {
 		var shaderType gl.GLenum
 
 		switch {
-		case strings.HasSuffix(fn, ".vs"):
+		case strings.HasSuffix(fn, ".vert"):
 			shaderType = gl.VERTEX_SHADER
-		case strings.HasSuffix(fn, ".gs"):
+		case strings.HasSuffix(fn, ".geom"):
 			shaderType = gl.GEOMETRY_SHADER
-		case strings.HasSuffix(fn, ".fs"):
+		case strings.HasSuffix(fn, ".frag"):
 			shaderType = gl.FRAGMENT_SHADER
 		default:
 			fmt.Println("Wrong suffix: " + fn)
