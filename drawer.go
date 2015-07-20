@@ -36,7 +36,7 @@ func NewSpriteDrawer(window *glfw.Window, layers int) *SpriteDrawer {
 
 	s.Camera = vec2.Identity
 
-	s.Program = CreateProgram("shaders/2d.vs", "shaders/2d.gs", "shaders/texture.fs")
+	s.Program = CreateProgram("shaders/2d.vert", "shaders/2d.geom", "shaders/texture.frag")
 	s.Use()
 	s.camera_uniform = s.GetUniformLocation("camera")
 
