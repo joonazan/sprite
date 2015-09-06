@@ -25,7 +25,8 @@ type SpriteDrawer struct {
 	Texture        gl.Texture
 	Window         *glfw.Window
 
-	multiplierX, multiplierY float64
+	width, height  int
+	viewportMatrix vec2.Matrix
 }
 
 func NewSpriteDrawer(window *glfw.Window, layers int) *SpriteDrawer {
@@ -58,26 +59,28 @@ func NewSpriteDrawer(window *glfw.Window, layers int) *SpriteDrawer {
 }
 
 func (d *SpriteDrawer) OnScreenResize(width, height int) {
-	gl.Viewport(0, 0, width, height)
-	d.multiplierX = 1.0 / float64(width) * 2.0
-	d.multiplierY = 1.0 / float64(height) * 2.0
+	d.width = width
+	d.height = height
+	d.viewportMatrix = vec2.Scale(2.0/float64(width), 2.0/float64(height))
 }
 
 func (d *SpriteDrawer) GetTransform() vec2.Matrix {
-	return d.Camera.Mul(vec2.Scale(d.multiplierX, d.multiplierY))
+	return d.Camera.Mul(d.viewportMatrix)
 }
 
 func (d *SpriteDrawer) GetMousePos() vec2.Vector {
 	x, y := d.Window.GetCursorPosition()
-	// tarvitaan normalisoidut opengl koordinaatit
-	w, h := d.Window.GetSize()
-	screen := vec2.Vector{x/float64(w)*2 - 1, -y/float64(h)*2 + 1}
+
+	screen := vec2.Vector{x/float64(d.width)*2 - 1, -y/float64(d.height)*2 + 1}
 
 	inv_transform := d.GetTransform().Inverse()
 	return screen.Transform(inv_transform)
 }
 
 func (drawer *SpriteDrawer) Draw(sprites []Sprite) {
+
+	gl.Viewport(0, 0, drawer.width, drawer.height)
+
 	if len(sprites) == 0 {
 		return
 	}
