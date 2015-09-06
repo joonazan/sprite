@@ -59,12 +59,12 @@ func NewSpriteDrawer(window *glfw.Window, layers int) *SpriteDrawer {
 
 func (d *SpriteDrawer) OnScreenResize(width, height int) {
 	gl.Viewport(0, 0, width, height)
-	d.multiplierX = 2048.0 / float64(width) * 2.0
-	d.multiplierY = 2048.0 / float64(height) * 2.0
+	d.multiplierX = 1.0 / float64(width) * 2.0
+	d.multiplierY = 1.0 / float64(height) * 2.0
 }
 
 func (d *SpriteDrawer) GetTransform() vec2.Matrix {
-	return d.Camera.Mul(vec2.Scale(d.multiplierX, d.multiplierY)).Mul(vec2.Scale(1./2048, 1./2048))
+	return d.Camera.Mul(vec2.Scale(d.multiplierX, d.multiplierY))
 }
 
 func (d *SpriteDrawer) GetMousePos() vec2.Vector {
