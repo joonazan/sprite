@@ -2,7 +2,7 @@ package sprite
 
 import (
 	"github.com/go-gl-legacy/gl"
-	glfw "github.com/go-gl/glfw3"
+	glfw "github.com/go-gl/glfw3/v3.0/glfw"
 	"log"
 	"runtime"
 )

@@ -2,7 +2,7 @@ package sprite
 
 import (
 	"github.com/go-gl-legacy/gl"
-	glfw "github.com/go-gl/glfw3"
+	glfw "github.com/go-gl/glfw3/v3.0/glfw"
 	"github.com/joonazan/vec2"
 	"unsafe"
 )
@@ -74,7 +74,7 @@ func (d *SpriteDrawer) GetMousePos() vec2.Vector {
 	screen := vec2.Vector{x/float64(d.width)*2 - 1, -y/float64(d.height)*2 + 1}
 
 	inv_transform := d.GetTransform().Inverse()
-	return screen.Transform(inv_transform)
+	return inv_transform.Transform(screen)
 }
 
 func (drawer *SpriteDrawer) Draw(sprites []Sprite) {
